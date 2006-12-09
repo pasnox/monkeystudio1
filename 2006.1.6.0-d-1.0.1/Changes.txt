@@ -1,0 +1,107 @@
+/********************************************************************************************************
+ * PROGRAM      : qt4ds
+ * DATE - TIME  : mardi 31 janvier 2006 - 15h08
+ * AUTHOR       : Nox P@sNox ( pasnox@hotmail.com )
+ * FILENAME     : Changes.txt
+ * LICENSE      : GPL
+ * COMMENTARY   :  This file get version history
+ ********************************************************************************************************/
+
+Current Version : 2006.1.5.2
+
+Qt4DS Team is now thinking of the futur of Qt4DS, the next major version 2.x.x
+will be based on plugin architecture allowing us to work and maintain code source easily.
+This is the first stable release of Qt4DS Monkey 1.x.x, until now 1.x.x serie 
+will not be update, only bugfix as we are working on the next major version.
+If u think u can help us, ask me by email pasnox@gmail.com with subject "Qt4DS Join"
+Ideas, comments and what u want are welcome too, with subject "Qt4DS Comments"
+
+There is no ready manual for now, but u can have a look in docsqt4ds/english.
+It's an under construction manual that has a well very good example "Hello World Widget"
+that works as an mini manual/tutorial about Qt4DS.
+
+Note: the current release will build qt4ds binary and a so/dll TextEditorPlugin.
+Windows suers can take this 2 files and copy them where they want.
+For Linux/Unix (Mac?!) users, u can copy the binary where u want, and must copy
+TextEditorPlugin.so in a system lib path ( like /usr/lib or /usr/local/lib )
+
+If you have a crash on start, simply delete your ini file ( %home%/session/.Qt 4 Developer Studio/.Qt 4 Developer Studio.ini )
+
+2006.1.6.0
+==========
+	* Fix show correct window on open a MDIClass widget in UIMain class
+	* Add first implementation of Code completion, code by Anacr0x
+	* Add first gdb integration, code by Xiantia
+	* New Splashscreen
+	* Some small fix
+	* You will need ctags in your path to get completion working, on windows u ca nput it in the same folder as monkey binary.
+
+2006.1.5.1
+==========
+	* Fix bug, miss a E in TextForEground : in Options, UIOptions, MDIChild
+	* TextEditor is no longer built as a separated librairy
+	* As name as been changed, this make obsolete .Qt 4 Developer Studio directory in your home path, u could delete it ( or copy it in the new directory and rename it )
+	* TextEditor Backup files are now saved as originalfilename.originalextension.bak
+	* Fix a bug in QMakeManager
+	* Mac OS X Bugs fix ( execute application, qtBin ... )
+	* MDIClass now show filename in window title
+
+2006.1.5.0 [Stable] 06/05/2006
+==========
+	* Now use my TextEditor plugin, the best TextEditor never seen !
+	* General code change due to the incorporation of TextEditor
+	* Fix bug that don t reopen files when project is a subdirs project
+	* SyntaxHighlighter color scheme working :) ( Thanks to my TextEditor lib )
+	* New Logo/screensplash
+	* New developers
+
+2006.1.0.0 Final (Not Released)
+================
+	* UIOptions & Options Update, some major changes, all options else printing and autocompletion are now working
+	* Small update in general code due to the changes in UIOptions & Options
+	* Add actions to clear the recently opened files/projects
+	* Font properties are bakup/restore on close/start
+	* Add print actions ( quick and dialog settings )
+
+2006.1.0.0 RC2c
+===============
+	* Really fix bug when saving project
+
+2006.1.0.0 RC2b
+===============
+	* Fix edits actions not disabled when no project open
+	* Add members to get mouse cursor position in a document (QTextEditor)
+	* Fix QMakeProject::removePlatformSettings & QMakeProject::writePlatformSettings bugs causing OS specific files bo not be saved in the project.
+
+2006.1.0.0 RC2 (1.0.0 RC2)
+==========================
+	* Add new toolbars that allow changing font and font size and some others things
+	* Divide tabulation with by 2.
+	* Fix UIAddExistingFiles, window is empty when compiling with Qt 4.1.1
+	* Add informations in the console telling an action is finish (QProcess)
+	* Add shortcuts on the menu
+	* Complete rewrite of all class related to the QTextEditor components, more intuitive API
+	* Add new members on some class as API have changed
+	* When searching/replacing text ( Ctrl+F/Ctrl+H) search window is activated
+	* on process start/stop console widget is activated
+	* Complete rewrite the class Options/UIOptions and related class
+	* Add action Build And Execute
+	* Fix correct caption for recents files/projects (it was inversed) in french translation
+	* Rewrite mdi child for changing font and font size and take about new QTextEditor
+	* Fix a bug that doesn't refresh tree project when checked/unchecked translation in project options (QMakeProject::updateTreeItem)
+	* Fix bugs in UIProjectSettings, assistant, designer, uitools, testlib, axcontainer, axserver are not really qt modules
+	* Add an actiongroup in the view menu allowing to change application style ( style is save in options )
+	* Fix translationPath that return a quoted filename without extension, breaking filename when qt add the extension, now return no quoted string
+	* Add entry for web browser, pdf viewer and mailer in options
+	* Some small fix, and a lot of things i have forgot.
+
+1.0.0 RC1
+=========
+	* Complet rewrite of the program, to lot of things to history :)
+
+BEFORE 1.0.0 RC1
+================
+	* UNKNOW... ( accidentely delete all archive files )
+
+					Nox P@sNox, ( pasnox@hotmail.com )
+--EOF

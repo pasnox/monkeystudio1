@@ -1,0 +1,188 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>UITextEditorDemo</class>
+ <widget class="QMainWindow" name="UITextEditorDemo" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>447</width>
+    <height>409</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>TextEditor Demo</string>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <layout class="QVBoxLayout" >
+    <property name="margin" >
+     <number>9</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item>
+     <widget class="TextEditor" name="teEditor" />
+    </item>
+    <item>
+     <widget class="QLabel" name="lOverwriteMode" >
+      <property name="frameShape" >
+       <enum>QFrame::Box</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="lCursorPosition" >
+      <property name="frameShape" >
+       <enum>QFrame::Box</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="lIndentMethod" >
+      <property name="frameShape" >
+       <enum>QFrame::Box</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="mBar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>447</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile" >
+    <property name="title" >
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen" />
+    <addaction name="actionClose" />
+    <addaction name="separator" />
+    <addaction name="actionQuit" />
+   </widget>
+   <widget class="QMenu" name="menuProperties" >
+    <property name="title" >
+     <string>Properties</string>
+    </property>
+    <addaction name="actionSetIndentMethod" />
+    <addaction name="actionSetHighlightCurrentLine" />
+    <addaction name="actionSetCurrentLineColor" />
+    <addaction name="actionSetLimitLine" />
+    <addaction name="actionSetLimitLineColor" />
+    <addaction name="actionSetTabSize" />
+    <addaction name="actionSetBackupFile" />
+    <addaction name="actionSetFilePath" />
+    <addaction name="actionSetScrollLines" />
+    <addaction name="actionSetSelectionColor" />
+    <addaction name="actionSetBackgroundColor" />
+    <addaction name="actionSetDefaultComponents" />
+   </widget>
+   <addaction name="menuFile" />
+   <addaction name="menuProperties" />
+  </widget>
+  <widget class="QStatusBar" name="sBar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>385</y>
+     <width>447</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <action name="actionSetHighlightCurrentLine" >
+   <property name="text" >
+    <string>SetHighlightCurrentLine</string>
+   </property>
+  </action>
+  <action name="actionSetCurrentLineColor" >
+   <property name="text" >
+    <string>SetCurrentLineColor</string>
+   </property>
+  </action>
+  <action name="actionSetLimitLine" >
+   <property name="text" >
+    <string>SetLimitLine</string>
+   </property>
+  </action>
+  <action name="actionSetLimitLineColor" >
+   <property name="text" >
+    <string>SetLimitLineColor</string>
+   </property>
+  </action>
+  <action name="actionSetTabSize" >
+   <property name="text" >
+    <string>SetTabSize</string>
+   </property>
+  </action>
+  <action name="actionSetBackupFile" >
+   <property name="text" >
+    <string>SetBackupFile</string>
+   </property>
+  </action>
+  <action name="actionSetFilePath" >
+   <property name="text" >
+    <string>SetFilePath</string>
+   </property>
+  </action>
+  <action name="actionSetScrollLines" >
+   <property name="text" >
+    <string>SetScrollLines</string>
+   </property>
+  </action>
+  <action name="actionSetSelectionColor" >
+   <property name="text" >
+    <string>SetSelectionColor</string>
+   </property>
+  </action>
+  <action name="actionSetBackgroundColor" >
+   <property name="text" >
+    <string>SetBackgroundColor</string>
+   </property>
+  </action>
+  <action name="actionSetDefaultComponents" >
+   <property name="text" >
+    <string>SetDefaultComponents</string>
+   </property>
+  </action>
+  <action name="actionSetIndentMethod" >
+   <property name="text" >
+    <string>SetIndentMethod</string>
+   </property>
+  </action>
+  <action name="actionOpen" >
+   <property name="text" >
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionClose" >
+   <property name="text" >
+    <string>Close</string>
+   </property>
+  </action>
+  <action name="actionQuit" >
+   <property name="text" >
+    <string>Quit</string>
+   </property>
+  </action>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>TextEditor</class>
+   <extends></extends>
+   <header>TextEditor.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

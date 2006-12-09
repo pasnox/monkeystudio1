@@ -1,0 +1,23 @@
+#include "INCLUDE"
+//
+#include <QCloseEvent>
+//
+QPointer<CLASSNAME> CLASSNAME::_self = 0L;
+//
+CLASSNAME* CLASSNAME::self( QWidget* parent )
+{
+	if ( !_self )
+		_self = new CLASSNAME( parent );
+	return _self;
+}
+//
+CLASSNAME::CLASSNAME( QWidget* parent )
+	: HERITS( parent )
+{
+	setupUi( this );
+}
+//
+void CLASSNAME::closeEvent( QCloseEvent* e )
+{
+	e->accept();
+}
