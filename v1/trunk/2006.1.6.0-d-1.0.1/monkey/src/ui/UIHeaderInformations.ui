@@ -1,0 +1,220 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>UIHeaderInformations</class>
+ <widget class="QDialog" name="UIHeaderInformations" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>399</width>
+    <height>372</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Header Informations</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>5</number>
+   </property>
+   <property name="spacing" >
+    <number>5</number>
+   </property>
+   <item row="5" column="0" colspan="2" >
+    <widget class="QLabel" name="lCommentary" >
+     <property name="text" >
+      <string>Commentary :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" >
+    <widget class="QLabel" name="lLicense" >
+     <property name="text" >
+      <string>License :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" >
+    <widget class="QComboBox" name="cbLicense" >
+     <property name="editable" >
+      <bool>true</bool>
+     </property>
+     <property name="currentIndex" >
+      <number>0</number>
+     </property>
+     <property name="autoCompletion" >
+      <bool>false</bool>
+     </property>
+     <item>
+      <property name="text" >
+       <string>GPL</string>
+      </property>
+     </item>
+     <item>
+      <property name="text" >
+       <string>QPL</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="3" column="0" >
+    <widget class="QLineEdit" name="leAuthor" />
+   </item>
+   <item row="2" column="0" >
+    <widget class="QLabel" name="lAuthor" >
+     <property name="text" >
+      <string>Author :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLineEdit" name="leProjectName" />
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="lProjectName" >
+     <property name="text" >
+      <string>Project Name :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" >
+    <widget class="QLineEdit" name="leEmail" />
+   </item>
+   <item row="2" column="1" >
+    <widget class="QLabel" name="lEmail" >
+     <property name="text" >
+      <string>Email :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QDateTimeEdit" name="dteDateTime" >
+     <property name="displayFormat" >
+      <string>dd/MM/yyyy @ hh:mm</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QLabel" name="lDateTime" >
+     <property name="text" >
+      <string>Date - Time :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="2" >
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="cbDisable" >
+       <property name="cursor" >
+        <cursor>13</cursor>
+       </property>
+       <property name="text" >
+        <string>Do not show again</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pbOK" >
+       <property name="minimumSize" >
+        <size>
+         <width>70</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="cursor" >
+        <cursor>13</cursor>
+       </property>
+       <property name="text" >
+        <string>OK</string>
+       </property>
+       <property name="icon" >
+        <iconset resource="../resources/resources.qrc" >:/Icons/Icons/buttonok.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pbCancel" >
+       <property name="minimumSize" >
+        <size>
+         <width>70</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="cursor" >
+        <cursor>13</cursor>
+       </property>
+       <property name="text" >
+        <string>Cancel</string>
+       </property>
+       <property name="icon" >
+        <iconset resource="../resources/resources.qrc" >:/Icons/Icons/buttoncancel.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="6" column="0" colspan="2" >
+    <widget class="QTextEdit" name="teCommentary" />
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <resources>
+  <include location="../resources/resources.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>pbOK</sender>
+   <signal>clicked()</signal>
+   <receiver>UIHeaderInformations</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>301</x>
+     <y>455</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>96</x>
+     <y>254</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pbCancel</sender>
+   <signal>clicked()</signal>
+   <receiver>UIHeaderInformations</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>392</x>
+     <y>455</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>179</x>
+     <y>282</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

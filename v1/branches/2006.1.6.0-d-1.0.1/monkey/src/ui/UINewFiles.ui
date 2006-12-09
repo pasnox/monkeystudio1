@@ -1,0 +1,532 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>UINewFiles</class>
+ <widget class="QDialog" name="UINewFiles" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>560</width>
+    <height>248</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>New Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>5</number>
+   </property>
+   <property name="spacing" >
+    <number>3</number>
+   </property>
+   <item>
+    <widget class="QTabWidget" name="twTemplates" >
+     <property name="cursor" >
+      <cursor>13</cursor>
+     </property>
+     <widget class="QWidget" name="tabProjects" >
+      <attribute name="title" >
+       <string>Projects</string>
+      </attribute>
+      <attribute name="icon" >
+       <iconset resource="..\resources\resources.qrc" >:/Icons/Icons/pbproject.png</iconset>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>5</number>
+       </property>
+       <property name="spacing" >
+        <number>3</number>
+       </property>
+       <item row="4" column="1" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="4" column="2" colspan="2" >
+        <widget class="QCheckBox" name="cbProjectsAddToProject" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="text" >
+          <string>Add to project</string>
+         </property>
+         <property name="checked" >
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3" >
+        <widget class="QToolButton" name="tbProjectsLocation" >
+         <property name="icon" >
+          <iconset resource="../resources/resources.qrc" >:/Icons/Icons/projectopen.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" colspan="2" >
+        <widget class="QLineEdit" name="leProjectsLocation" >
+         <property name="toolTip" >
+          <string>You can write a not existing path</string>
+         </property>
+        </widget>
+       </item>
+       <item rowspan="5" row="0" column="0" >
+        <widget class="QListWidget" name="lwProjects" >
+         <property name="horizontalScrollBarPolicy" >
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="iconSize" >
+          <size>
+           <width>16</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="flow" >
+          <enum>QListView::TopToBottom</enum>
+         </property>
+         <property name="isWrapping" stdset="0" >
+          <bool>false</bool>
+         </property>
+         <property name="viewMode" >
+          <enum>QListView::ListMode</enum>
+         </property>
+         <item>
+          <property name="text" >
+           <string>Qt Gui</string>
+          </property>
+          <property name="icon" >
+           <iconset resource="..\resources\resources.qrc" >:/Icons/Icons/projectaddform.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Qt Console</string>
+          </property>
+          <property name="icon" >
+           <iconset resource="..\resources\resources.qrc" >:/Icons/Icons/tabconsole.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Qt Dll</string>
+          </property>
+          <property name="icon" >
+           <iconset resource="..\resources\resources.qrc" >:/Icons/Icons/buildmisc.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Qt Static Lib</string>
+          </property>
+          <property name="icon" >
+           <iconset resource="..\resources\resources.qrc" >:/Icons/Icons/buildmisc.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Qt PlugIn</string>
+          </property>
+          <property name="icon" >
+           <iconset resource="..\resources\resources.qrc" >:/Icons/Icons/buildmisc.png</iconset>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="3" >
+        <widget class="QLineEdit" name="leProjectsFileName" >
+         <property name="toolTip" >
+          <string>You can omit the extension</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="3" >
+        <widget class="QLabel" name="lProjectsFileName" >
+         <property name="text" >
+          <string>Project Name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" colspan="3" >
+        <widget class="QLabel" name="lProjectsLocation" >
+         <property name="text" >
+          <string>Location</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabFiles" >
+      <attribute name="title" >
+       <string>Files</string>
+      </attribute>
+      <attribute name="icon" >
+       <iconset resource="..\resources\resources.qrc" >:/Icons/Icons/edit.png</iconset>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>5</number>
+       </property>
+       <property name="spacing" >
+        <number>3</number>
+       </property>
+       <item row="1" column="1" colspan="3" >
+        <widget class="QLineEdit" name="leFilesFileName" >
+         <property name="toolTip" >
+          <string>Enter the exact basename of your file</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2" colspan="2" >
+        <widget class="QCheckBox" name="cbFilesAddToProject" >
+         <property name="text" >
+          <string>Add to project</string>
+         </property>
+         <property name="checked" >
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>0</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="3" >
+        <widget class="QToolButton" name="tbFilesLocation" >
+         <property name="icon" >
+          <iconset resource="../resources/resources.qrc" >:/Icons/Icons/projectopen.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" colspan="2" >
+        <widget class="QLineEdit" name="leFilesLocation" >
+         <property name="toolTip" >
+          <string>You can write a not existing path</string>
+         </property>
+         <property name="text" >
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item rowspan="5" row="0" column="0" >
+        <widget class="QListWidget" name="lwFiles" >
+         <property name="verticalScrollBarPolicy" >
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy" >
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="iconSize" >
+          <size>
+           <width>16</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="flow" >
+          <enum>QListView::TopToBottom</enum>
+         </property>
+         <property name="isWrapping" stdset="0" >
+          <bool>false</bool>
+         </property>
+         <property name="viewMode" >
+          <enum>QListView::ListMode</enum>
+         </property>
+         <item>
+          <property name="text" >
+           <string>Text File</string>
+          </property>
+          <property name="icon" >
+           <iconset resource="..\resources\resources.qrc" >:/Icons/Icons/projectshowfile.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Main File</string>
+          </property>
+          <property name="icon" >
+           <iconset resource="..\resources\resources.qrc" >:/Icons/Icons/cpp.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Header File</string>
+          </property>
+          <property name="icon" >
+           <iconset resource="..\resources\resources.qrc" >:/Icons/Icons/h.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Source File</string>
+          </property>
+          <property name="icon" >
+           <iconset resource="..\resources\resources.qrc" >:/Icons/Icons/cpp.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Class</string>
+          </property>
+          <property name="icon" >
+           <iconset resource="..\resources\resources.qrc" >:/Icons/Icons/cpp.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>PlugIn Class</string>
+          </property>
+          <property name="icon" >
+           <iconset resource="..\resources\resources.qrc" >:/Icons/Icons/cpp.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text" >
+           <string>Collection PlugIn Class</string>
+          </property>
+          <property name="icon" >
+           <iconset resource="..\resources\resources.qrc" >:/Icons/Icons/cpp.png</iconset>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="3" >
+        <widget class="QLabel" name="lFilesFileName" >
+         <property name="text" >
+          <string>File Name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" colspan="3" >
+        <widget class="QLabel" name="lFilesLocation" >
+         <property name="text" >
+          <string>Location</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabTemplates" >
+      <attribute name="title" >
+       <string>Templates</string>
+      </attribute>
+      <attribute name="icon" >
+       <iconset resource="..\resources\resources.qrc" >:/Icons/Icons/projectaddtemplate.png</iconset>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>5</number>
+       </property>
+       <property name="spacing" >
+        <number>3</number>
+       </property>
+       <item rowspan="5" row="0" column="0" >
+        <widget class="QListWidget" name="lwTemplates" >
+         <property name="verticalScrollBarPolicy" >
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy" >
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="iconSize" >
+          <size>
+           <width>16</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="flow" >
+          <enum>QListView::TopToBottom</enum>
+         </property>
+         <property name="isWrapping" stdset="0" >
+          <bool>false</bool>
+         </property>
+         <property name="viewMode" >
+          <enum>QListView::ListMode</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="3" >
+        <widget class="QLabel" name="lTemplatesFileName" >
+         <property name="text" >
+          <string>File Name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" colspan="3" >
+        <widget class="QLabel" name="lTemplatesLocation" >
+         <property name="text" >
+          <string>Location</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="3" >
+        <widget class="QLineEdit" name="leTemplatesFileName" >
+         <property name="toolTip" >
+          <string>Enter the exact basename of your file</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" colspan="2" >
+        <widget class="QLineEdit" name="leTemplatesLocation" >
+         <property name="toolTip" >
+          <string>You can write a not existing path</string>
+         </property>
+         <property name="text" >
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3" >
+        <widget class="QToolButton" name="tbTemplatesLocation" >
+         <property name="icon" >
+          <iconset resource="../resources/resources.qrc" >:/Icons/Icons/projectopen.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2" colspan="2" >
+        <widget class="QCheckBox" name="cbTemplatesAddToProject" >
+         <property name="text" >
+          <string>Add to project</string>
+         </property>
+         <property name="checked" >
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>111</width>
+           <height>16</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>3</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>131</width>
+         <height>31</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pbOK" >
+       <property name="minimumSize" >
+        <size>
+         <width>70</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="cursor" >
+        <cursor>13</cursor>
+       </property>
+       <property name="text" >
+        <string>OK</string>
+       </property>
+       <property name="icon" >
+        <iconset resource="../resources/resources.qrc" >:/Icons/Icons/buttonok.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pbCancel" >
+       <property name="minimumSize" >
+        <size>
+         <width>70</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="cursor" >
+        <cursor>13</cursor>
+       </property>
+       <property name="text" >
+        <string>Cancel</string>
+       </property>
+       <property name="icon" >
+        <iconset resource="../resources/resources.qrc" >:/Icons/Icons/buttoncancel.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <resources>
+  <include location="../resources/resources.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>pbOK</sender>
+   <signal>clicked()</signal>
+   <receiver>UINewFiles</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>278</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>96</x>
+     <y>254</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pbCancel</sender>
+   <signal>clicked()</signal>
+   <receiver>UINewFiles</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>369</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>179</x>
+     <y>282</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

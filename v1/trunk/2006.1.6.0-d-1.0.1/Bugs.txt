@@ -1,0 +1,68 @@
+/********************************************************************************************************
+ * PROGRAM      : qt4ds
+ * DATE - TIME  : mardi 31 janvier 2006 - 15h04
+ * AUTHOR       : Nox P@sNox ( pasnox@hotmail.com )
+ * FILENAME     : bugs.txt
+ * LICENSE      : GPL
+ * COMMENTARY   : This file list all know bugs in the forum
+ ********************************************************************************************************/
+ 
+See changes.txt from now.
+
+11/08/2006
+=======
+
+* TextEditor : 
+	Fix setTabSize( int i ), it use \t for setting tabwith witch is no longer work Qt > 4.1.2 , replace \t by x
+
+06/05/2006
+========
+* A lot of things !
+
+18/04/2006
+========
+* QMakeProject :
+	Fix removePlatformSettings & writePlatformSettings bugs causing OS specific files bo not be saved.
+
+11/04/2006
+========
+	A lot of things.
+
+18/03/2006
+========
+
+* UIMain :
+	Fixed, when using an action from Build or Debugger menu, disable all actions from those menus until process exit.
+
+01/03/2006
+========
+
+* UIAddExistingFiles :
+	Fixed, window is empty when compiling with Qt4.1.1
+
+02/16/2006
+========
+
+*  QString Tools::quoted() : 
+	Fixed, replace simple quote by double quote.
+
+* void UIMain::on_mProcess_readyRead()
+	Fixed, use fromLocal8Bit instead of standart QString.
+
+* UIMain :
+	Remove Object Tab in the project box.
+
+* UIOptions :
+	Options that are not currently handled have been disabled.
+
+* bool UINewFiles::projectAccepted()
+	Fixed, Some changes to project template.
+
+* bool UINewFiles::fileAccepted()
+	Fixed, Console project no longer need a Widget.
+
+* Windows (R) :
+	Fixed, Console project no longer need QtGui.
+
+					Nox P@sNox, ( pasnox@hotmail.com )
+--EOF

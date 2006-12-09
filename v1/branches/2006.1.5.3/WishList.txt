@@ -1,0 +1,26 @@
+/********************************************************************************************************
+ * PROGRAM      : qt4ds
+ * DATE - TIME  : dimanche 26 mars 2006 - 00h28
+ * AUTHOR       : Nox PasNox ( pasnox at hotmail.com )
+ * FILENAME     : WishList.txt
+ * LICENSE      : GPL
+ * COMMENTARY   : This file list all know whishlist in the forum
+ ********************************************************************************************************/
+
+- completion automatique 
+- indentation automatique (qui marche) 
+- lorsque le curseur est sur une parenthèse/accolade, surlignage de celle opposée 
+- lorsqu'une erreur se passe, il faudrait pouvoir cliquer dessus pour aller à la ligne 
+- pouvoir mettre un "marque-ligne" dans la marge de gauche (visible aussi dans l'ascenseur) à la kate 
+- pouvoir faire un clic droit sur une des tab pour la fermer (jamais aimé la manière actuelle de fermé un tab) 
+- pouvoir caché des fonctions (à l'aide d'un petit carré sur la gauche) 
+- coloration de la ligne courante 
+- un dialogue de réglage de la coloration syntaxique (qui marche) 
+- customisation des modèles 
+- intégration du debugger 
+- ajout de modèle (à la kate) 
+- gestion des ressources 
+
+
+					Nox P@sNox, ( pasnox@hotmail.com )
+--EOF

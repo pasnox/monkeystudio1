@@ -1,0 +1,32 @@
+define printqstring
+>    printf "(QString)0x%x: \"",&$arg0
+>    set $i=0
+>    while $i < $arg0.d->size
+>        set $c=$arg0.d->data[$i++]
+>        if $c < 32 || $c > 127
+>                printf "\\u0x%04x", $c
+>        else
+>                printf "%c", (char)$c
+>        end
+>    end
+>    printf "\"\n"
+>end
+
+
+
+debuger 0-5
+
+change log :
+
+	affiche variable
+	modif variable
+	
+	ajoute breakpoint
+	supprime breakpoint
+
+	mono thread
+	
+	affiche registre
+	ne modifit pas les registre
+
+	touts fichiers dans src/debuger
