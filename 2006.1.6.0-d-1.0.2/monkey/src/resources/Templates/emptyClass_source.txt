@@ -1,0 +1,9 @@
+#include "FILENAME"
+//
+CLASSNAME::CLASSNAME()
+{
+}
+//
+CLASSNAME::~CLASSNAME()
+{
+}

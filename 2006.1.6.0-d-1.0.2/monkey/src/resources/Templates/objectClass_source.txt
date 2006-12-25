@@ -1,0 +1,10 @@
+#include "FILENAME"
+//
+CLASSNAME::CLASSNAME( QObject* parent )
+	: HERITS( parent )
+{
+}
+//
+CLASSNAME::~CLASSNAME()
+{
+}
