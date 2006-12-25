@@ -1,0 +1,193 @@
+<ui version="4.0" >
+ <class>UIAbout</class>
+ <widget class="QDialog" name="UIAbout" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>423</width>
+    <height>317</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>About...</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>5</number>
+   </property>
+   <property name="spacing" >
+    <number>3</number>
+   </property>
+   <item row="0" column="0" colspan="3" >
+    <widget class="QTabWidget" name="twInformations" >
+     <property name="cursor" >
+      <cursor>13</cursor>
+     </property>
+     <property name="currentIndex" >
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="pVersion" >
+      <attribute name="title" >
+       <string>Version</string>
+      </attribute>
+      <attribute name="icon" >
+       <iconset resource="../resources/resources.qrc" >:/Icons/Icons/logo.png</iconset>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="lLogo" >
+         <property name="pixmap" >
+          <pixmap resource="../resources/resources.qrc" >:/Icons/Icons/helpsplashscreen.png</pixmap>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="lInformations" >
+         <property name="text" >
+          <string>Informations</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QTextBrowser" name="tbAuthors" >
+      <property name="frameShape" >
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="undoRedoEnabled" >
+       <bool>false</bool>
+      </property>
+      <property name="readOnly" >
+       <bool>true</bool>
+      </property>
+      <property name="tabStopWidth" >
+       <number>40</number>
+      </property>
+      <attribute name="title" >
+       <string>Authors</string>
+      </attribute>
+      <attribute name="icon" >
+       <iconset resource="../resources/resources.qrc" >:/Icons/Icons/projectopen.png</iconset>
+      </attribute>
+     </widget>
+     <widget class="QTextBrowser" name="tbTesters" >
+      <property name="frameShape" >
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="undoRedoEnabled" >
+       <bool>false</bool>
+      </property>
+      <property name="readOnly" >
+       <bool>true</bool>
+      </property>
+      <property name="tabStopWidth" >
+       <number>40</number>
+      </property>
+      <attribute name="title" >
+       <string>Testers</string>
+      </attribute>
+      <attribute name="icon" >
+       <iconset resource="../resources/resources.qrc" >:/Icons/Icons/helptesters.png</iconset>
+      </attribute>
+     </widget>
+     <widget class="QTextBrowser" name="tbGreetings" >
+      <property name="frameShape" >
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="undoRedoEnabled" >
+       <bool>false</bool>
+      </property>
+      <property name="readOnly" >
+       <bool>true</bool>
+      </property>
+      <property name="tabStopWidth" >
+       <number>40</number>
+      </property>
+      <attribute name="title" >
+       <string>Greetings</string>
+      </attribute>
+      <attribute name="icon" >
+       <iconset resource="../resources/resources.qrc" >:/Icons/Icons/helpgreettings.png</iconset>
+      </attribute>
+     </widget>
+    </widget>
+   </item>
+   <item row="1" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>121</width>
+       <height>27</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>131</width>
+       <height>27</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QPushButton" name="pbOK" >
+     <property name="minimumSize" >
+      <size>
+       <width>70</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="cursor" >
+      <cursor>13</cursor>
+     </property>
+     <property name="text" >
+      <string>OK</string>
+     </property>
+     <property name="icon" >
+      <iconset resource="../resources/resources.qrc" >:/Icons/Icons/buttonok.png</iconset>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../resources/resources.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>pbOK</sender>
+   <signal>clicked()</signal>
+   <receiver>UIAbout</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>215</x>
+     <y>526</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>241</x>
+     <y>669</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

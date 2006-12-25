@@ -1,0 +1,24 @@
+#ifndef FILENAME
+#define FILENAME
+//
+#include "INCLUDE"
+//
+#include <QPointer>
+//
+class CLASSNAME : public HERITS, public Ui::CLASSNAME
+{
+	Q_OBJECT
+	//
+public:
+	static CLASSNAME* self( QWidget* = 0 );
+	//
+protected:
+	void closeEvent( QCloseEvent* );
+	//
+private:
+	CLASSNAME( QWidget* = 0 );
+	static QPointer<CLASSNAME> _self;
+	//
+};
+//
+#endif // FILENAME

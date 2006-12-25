@@ -1,0 +1,12 @@
+#ifndef FILENAME
+#define FILENAME
+//
+class CLASSNAME
+{
+public:
+	CLASSNAME();
+	~CLASSNAME();
+	//
+};
+//
+#endif // FILENAME
