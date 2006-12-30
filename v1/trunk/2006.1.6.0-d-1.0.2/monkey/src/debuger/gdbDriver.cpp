@@ -5,7 +5,7 @@
 //======================================
 
 
-// INFO : pas de bug trouvé
+// INFO : pas de bug trouv
 
 
 #include "gdbDriver.h"
@@ -26,6 +26,9 @@
 // prompt connu de GDB
 QList <QString> PROMPT_GDB = QStringList() << "(gdb) " << "gdb> ";
 QTime mytime;
+
+extern void printQstring(QString str);
+
 
 GdbDriver::GdbDriver(  )
 {
@@ -72,7 +75,11 @@ GdbDriver::~GdbDriver(  )
 
 void GdbDriver::gdbfinished ( int a, QProcess::ExitStatus  b)
 {
-//qDebug("Gdb terminé");
+// no warning
+a=a;
+b=b;
+
+//qDebug("Gdb termin");
 	delete this;
 }
 
@@ -87,10 +94,11 @@ void GdbDriver::slotGdbCommandend()
 		if(LOG_GDB && file_log_gdb)
 		{
 			QTextStream out(file_log_gdb);
- 			out << QString( "start send command -> temps ecoulée apres le signal " + QString::number(mytime.elapsed()) +"\r\n" + mCommandList.value(0)).toAscii() ;
+ 			out << QString( "start send command -> temps ecoule apres le signal " + QString::number(mytime.elapsed()) +"\r\n" + mCommandList.value(0)).toAscii() ;
 			out.flush();
 		}
 		mytime.restart();
+//		printQstring(mCommandList.value(0));
 		mpGdbProcess->write(mCommandList.value(0).toAscii());
 		mCommandList. removeAt(0);
 	}
@@ -138,8 +146,12 @@ void GdbDriver::gdbFinishCommandStd()
 	
 	
 	st.append(QString::fromLocal8Bit (tes));
-//	out << QString( "msg brute -> " +st);
 
+//printQstring(st);
+
+	/* 
+	On start gdb
+	*/
 
 	if(st.contains("This GDB was configured as"))
 	{
@@ -156,15 +168,39 @@ void GdbDriver::gdbFinishCommandStd()
 		return;
 	}
 
+	/*
+	when you quit gdb befort program finished
+	gdb tell you "Exit anyway? y, n"
+	*/
+
 	if(st.contains("Exit anyway?"))
 	{
 		setCommand("y");
-		GdbIdl = true;		
+		GdbIdl = true;
 		st.clear();
 		emit signalGdbCommandEnd();
 		return;
 	}
 
+	/*
+	under linux
+	when you want debugging program that no have debug option.
+	when you send "b main.cpp:9" , gdb tell you 
+	"No source file named main.cpp.
+	Make breakpoint pending on future shared library load? (y or [n])
+	*/
+
+/*	if(st.contains("Make breakpoint pending on future shared library load"))
+	{
+		printQstring("demande question");
+		setCommand("n");
+		GdbIdl = true;		
+		emit GdbInfo(st.remove("(gdb) "));		
+		st.clear();
+		emit signalGdbCommandEnd();
+		return;
+	}
+*/
 	if(st.contains/*endsWith*/("(gdb) "))
 	{
 		if(LOG_GDB && file_log_gdb)
@@ -220,6 +256,7 @@ void GdbDriver::gdbFinishCommandErr()
 //		out.flush();
 //		st.clear();
 
+printQstring("err -> " + st);
 	
 	if(st.contains("\n"))
 	{

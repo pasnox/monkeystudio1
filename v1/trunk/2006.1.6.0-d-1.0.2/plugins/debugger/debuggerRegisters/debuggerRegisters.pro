@@ -20,9 +20,6 @@ SOURCES	= debuggerRegisters.cpp \
 
 FORMS	= settingRegister.ui
 
-OPENEDFILES	= debuggerRegisters.h \
-	debuggerRegisters.cpp
-
 HEADERS	= debuggerRegisters.h \
 	settingRegister.h
 

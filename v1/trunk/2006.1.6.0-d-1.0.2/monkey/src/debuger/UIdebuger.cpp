@@ -475,8 +475,9 @@ void UIdebugger::onDataFromGdb(QString st)
 	Program termined
 	gdb -> Program exited normaly.
 	
-	gdb for windows 5.2.1, i686-pc-mingw32 (ok)
-	gdb for linux
+	Testing on :
+	gdb for windows 5.2.1, i686-pc-mingw32 , Windows XP service pack 2 -> status (ok)
+	gdb for linux GNU gdb 6.4.90-debian, i486-linux-gnu , kubuntu 6.10 -> status (ok)
 	*/
 
 	if( st.contains("Program exited "))
@@ -488,16 +489,19 @@ void UIdebugger::onDataFromGdb(QString st)
 
 	/*
 	Program no compiled with debug option
-	gdb ->  Reading symbols from /home/dev/..... no debugging symbols found
-
-	gdb for windows 5.2.1, i686-pc-mingw32 (ok)
-	gdb for linux
+	gdb -> Reading symbols from /home/dev/..... no debugging symbols found ( windows)
+	gdb -> No source file named ( kubuntu )
+	
+	Testing on :
+	gdb for windows 5.2.1, i686-pc-mingw32 , Windows XP service pack 2 -> status (ok)
+	gdb for linux GNU gdb 6.4.90-debian, i486-linux-gnu , kubuntu 6.10 -> status (  WORK but bug )
 	*/
 
-	if( st.contains("no debugging symbols found")) 
+	if( st.contains("no debugging symbols found") || st.contains("No source file named")) 
 	{
-		QMessageBox::information(this,tr("Information."), tr("Your project is not building in debug mode. ! "),QMessageBox::Ok);
 		on_qActionDebuggerStop_triggered(); // after it call debugerStop();
+		QMessageBox::information(this,tr("Information."), tr("Your project is not building in debug mode. ! "),QMessageBox::Ok);
+//		on_qActionDebuggerStop_triggered(); // after it call debugerStop();
 		return;
 	}
 
@@ -505,8 +509,10 @@ void UIdebugger::onDataFromGdb(QString st)
 	The code source is more recent than program
 	gdb -> warning: Source file is more recent than executable
 
-	gdb for windows 5.2.1, i686-pc-mingw32 (ok)
-	gdb for linux
+	Testing on :
+	gdb for windows 5.2.1, i686-pc-mingw32 , Windows XP service pack 2 -> status (ok)
+	gdb for linux GNU gdb 6.4.90-debian, i486-linux-gnu , kubuntu 6.10 -> status (ok)
+
 	*/
 
 	if(st.contains("warning: Source file is more recent than executable"))
@@ -521,8 +527,9 @@ void UIdebugger::onDataFromGdb(QString st)
 	gdb -> Breakpoint 1, main (argc=0x3, argv=0xbfe6ef84) at main.cpp:18
 	gdb -> Breakpoint 1, boucle (i=0) at src/main.cpp:24
 
+	Testing on :
 	gdb for windows 5.2.1, i686-pc-mingw32 (ok)
-	gdb for linux
+	gdb for linux GNU gdb 6.4.90-debian, i486-linux-gnu , kubuntu 6.10 -> status (ok)
 	*/
 
 	if( st.contains("Breakpoint")  && st.contains("at") && !st.contains("file"))
@@ -533,8 +540,9 @@ void UIdebugger::onDataFromGdb(QString st)
 	Breakpoint 1 at 0x8052a27: file main.cpp, line 18. (gentoo)
 	Breakpoint 2 at 0x804a39b: file src/main.cpp, line 26. (kubuntu)
 
+	Testing on :
 	gdb for windows 5.2.1, i686-pc-mingw32 (ok)
-	gdb for linux
+	gdb for linux GNU gdb 6.4.90-debian, i486-linux-gnu , kubuntu 6.10 -> status (ok)
 	*/
 
 	if( (st.contains("Breakpoint")  ) && st.contains("at") && st.contains("file") && st.contains("line"))

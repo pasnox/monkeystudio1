@@ -77,10 +77,8 @@ FORMS	= src/3rdparty/TextEditor/src/ui/ReplaceDialog.ui \
 
 OPENEDFILES	= src/debuger/UIdebuger.h \
 	src/debuger/UIdebuger.cpp \
-	src/ui/UIMain.h \
-	src/ui/UIMain.cpp \
-	src/3rdparty/TextEditor/src/Gluter.h \
-	src/3rdparty/TextEditor/src/Gluter.cpp
+	src/debuger/gdbDriver.h \
+	src/debuger/gdbDriver.cpp
 
 HEADERS	= src/3rdparty/TextEditor/src/BlockData.h \
 	src/3rdparty/TextEditor/src/Completion.h \
