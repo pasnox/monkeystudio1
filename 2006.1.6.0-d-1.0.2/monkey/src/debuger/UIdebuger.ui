@@ -118,7 +118,7 @@
              <number>1</number>
             </property>
             <property name="text" >
-             <string>Debugger no started </string>
+             <string>Gdb no started </string>
             </property>
             <property name="scaledContents" >
              <bool>false</bool>

@@ -151,9 +151,13 @@ public slots:
 	//
 	void setDefaultProperties();
 	//
+	void moveBreakpointDown();
+	void moveBreakpointUp(int);
 	void gotoDebugerLine(QString file, int line , bool show);
-	void addBreakpoint(int bp);
-	QList <int> getAllBreakpoint();
+
+
+//	void addBreakpoint(int bp);
+//	QList <int> getAllBreakpoint();
 
 private slots:
 	void cursorPositionChanged();
@@ -171,7 +175,6 @@ signals:
 	//
 	// xiantia debuger CTRL +B
 	void signalBreakpointAt(QString, int);
-	
 };
 //
 #endif // TEXTEDITOR_H

@@ -196,8 +196,25 @@ void TextEditor::keyPressEvent( QKeyEvent* e )
 			setOverwriteMode( !overwriteMode() );
 			emit overwriteModeChanged( overwriteMode() );
 			break;
+
+			case Qt::Key_Delete:
+			case Qt::Key_Backspace:
+			{
+			// xiantia
+			QTextCursor c( textCursor() );
+			if(c.hasSelection()) 
+			qDebug(QString( QString::number(c.blockNumber ()) + " start " + QString::number(c.selectionStart () ) + " stop " + QString::number(c.selectionEnd () )    ).toAscii());
+			
+			moveBreakpointUp(e->key() );
+// and xiantia
+			QTextEdit::keyPressEvent( e );
+}
+			break;
 			case Qt::Key_Return:
 			case Qt::Key_Enter:
+// xiantia
+			moveBreakpointDown();
+// and xiantia
 			QTextEdit::keyPressEvent( e );
 			updateTextIndent();
 			break;
@@ -209,7 +226,7 @@ void TextEditor::keyPressEvent( QKeyEvent* e )
 	}
 }
 //
-
+/*
 QList <int> TextEditor::getAllBreakpoint()
 {
 	return mGluter->breakpointList;
@@ -219,6 +236,109 @@ void TextEditor::addBreakpoint(int bp)
 {
 	mGluter->breakpointList << bp;
 }
+
+*/
+/*
+		 fait bouger le breakpoint suivant l'editeur si
+		l'utilisateur surpprime ou ajoute une ligne
+*/
+
+void TextEditor::moveBreakpointDown()
+{
+	// find cursor position 
+	int activeLine = getCursorYPosition();
+	for(int i=0; i<mGluter->breakpointList.count(); i++)
+	{
+		// si le curseur est a la fin de la ligne
+		// alors le bp ne bouge pas
+		QTextCursor c( textCursor() );
+		if(c.atBlockEnd())
+		{
+			// find if there is a breakpoint under this line
+			if(mGluter->breakpointList.at(i) > activeLine)
+			{
+				emit signalBreakpointAt(mFilePath, mGluter->breakpointList[i]);
+				mGluter->breakpointList[i] = mGluter->breakpointList[i] + 1;
+				emit signalBreakpointAt(mFilePath, mGluter->breakpointList[i]);
+			}
+		}
+		else
+		{
+			// find if there is a breakpoint under this line
+			if(mGluter->breakpointList.at(i) >= activeLine)
+			{
+				emit signalBreakpointAt(mFilePath, mGluter->breakpointList[i]);
+				mGluter->breakpointList[i] = mGluter->breakpointList[i] + 1;
+				emit signalBreakpointAt(mFilePath, mGluter->breakpointList[i]);
+			}
+		}
+	}
+	mGluter->update();
+}
+
+
+void TextEditor::moveBreakpointUp(int Key)
+{
+	// find cursor position 
+	int activeLine = getCursorYPosition();
+	
+	// parcour la list des pb present
+	for(int i=0; i<mGluter->breakpointList.count(); i++)
+	{
+		QTextCursor c( textCursor() );
+
+		// un bp est present alors qu'il n'y a rien sur la ligne
+		if( c.atBlockEnd() && c.atBlockStart() && ( mGluter->breakpointList.at(i) == activeLine  ))
+		{
+			mGluter->breakpointList.removeAt(mGluter->breakpointList.indexOf(activeLine));
+			emit signalBreakpointAt(mFilePath,activeLine);
+		}
+		else
+		{
+			// le curseur est au debut de la ligne
+			if( c.atBlockStart() && (Key == Qt::Key_Backspace) && (mGluter->breakpointList.at(i) >= activeLine))
+			{
+				if(  mGluter->breakpointList.indexOf( mGluter->breakpointList[i] -1) != -1) // cas de deux bp qui vont ce chevaucher
+				{
+					mGluter->breakpointList.removeAt(mGluter->breakpointList.indexOf( mGluter->breakpointList[i] ));
+					emit signalBreakpointAt(mFilePath, mGluter->breakpointList[i]);
+				}
+				else
+				{
+					emit signalBreakpointAt(mFilePath, mGluter->breakpointList[i]);
+					mGluter->breakpointList[i] = mGluter->breakpointList[i] - 1;
+					emit signalBreakpointAt(mFilePath, mGluter->breakpointList[i]);
+				}
+			}
+
+			if(c.atBlockEnd() && (Key == Qt::Key_Delete) && (mGluter->breakpointList.at(i) > activeLine))
+			{
+				if(  mGluter->breakpointList.indexOf( mGluter->breakpointList[i] -1) != -1) // cas de deux bp qui vont ce chevaucher
+				{
+					mGluter->breakpointList.removeAt(mGluter->breakpointList.indexOf( mGluter->breakpointList[i] ));
+					emit signalBreakpointAt(mFilePath, mGluter->breakpointList[i]);
+				}
+				else
+				 {
+					emit signalBreakpointAt(mFilePath, mGluter->breakpointList[i]);
+					mGluter->breakpointList[i] = mGluter->breakpointList[i] - 1;
+					emit signalBreakpointAt(mFilePath, mGluter->breakpointList[i]);
+				}
+			}
+		}
+	}
+/*
+	QString tmp="bp list on Up ";
+	for(int i=0 ; i<mGluter->breakpointList.count(); i++)
+	{
+		tmp += QString::number( mGluter->breakpointList[i]) + ", ";
+	}
+	qDebug(tmp.toAscii());
+	mGluter->update();
+*/
+}
+
+
 
 // for debuger
 void TextEditor::gotoDebugerLine(QString file, int line, bool  show)

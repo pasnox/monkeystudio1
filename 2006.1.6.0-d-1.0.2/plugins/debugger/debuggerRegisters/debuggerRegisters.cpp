@@ -83,11 +83,11 @@ void RegisterPlugin::pluginGdbStarted(bool a)
 	{
 		for(int i =0; i <twRegister->rowCount(); i++)
 		{
-			twRegister->item(i,1)->setText("$ = ...");
-			twRegister->item(i,3)->setText("$ = ...");
+			 if(twRegister->item(i,1) != NULL) twRegister->item(i,1)->setText("$ = ...") ;
+			 if(twRegister->item(i,3) != NULL) twRegister->item(i,3)->setText("$ = ...") ;
+			
 		}
 	}
-	
 }
 
 QDialog * RegisterPlugin::pluginSetting()

@@ -19,6 +19,8 @@ private:
 	settingWatch( QWidget* = 0 );
 	static QPointer<settingWatch> _self;
 	//
+public slots:
+	void onClose();
 };
 //
 #endif // SETTINGWATCH_H

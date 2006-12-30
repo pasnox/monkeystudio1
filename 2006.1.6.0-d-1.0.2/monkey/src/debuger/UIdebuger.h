@@ -1,34 +1,42 @@
-/*============================================
-autor : xiantia
+/*
+
+author : Xiantia
 date : 02/09/06
 
-
-class name UIdebuger
-
-
-public slot:
-	
-	// enable /desable le menu contextuel start/stop
-	debugerEnable(true); // si projet ouvert
-	debugerEnable(false); // a la fermeture du debuger
-
-	// ajoute ou supprime un breakpoint dans le debuger
-	void debugerToggleBreakpoint(QString Filname, int atLine);
-
-	// memorise le nom du programe executable
-	debugerSetProgName(QString ProgName); // remplace debugerStart()
-
-signal	
-	debugerSignalAtLine(QString file, int numLine);
-	debugerSignalStoped();
-	debugerSignalStarted();
+class name UIdebugger
 */
+	
+	/* 
+	A pour effet de griser les menu start et stop du menu contextuel.
+	De stopper le debugger si il etait en fonction a la fermeture du projet
+	De notify a tout les plugin que le projet est ouvert / fermé 
+	*/
+	
+	//	debuggerProjetOpened(true / false);
+
+	/* 
+	Permet d'ajouter / supprimer un  breakpoint dans le debugger
+	*/
+
+	//	void debuggerToggleBreakpoint(QString Filname, int atLine);
+
+	/*
+	Donne au debugger le nom du programme
+	*/
+
+	//	debugerSetProgName(QString ProgName); // remplace debugerStart()
+
+	/* 
+	signal emit
+	*/
+
+	//	debuggerSignalAtLine(QString file, int numLine);
+	//	debuggerSignalStoped();
+	//	debuggerSignalStarted();
 
 
-
-
-//#ifndef UIDEBUGER_H
-//#define UIDEBUGER_H
+#ifndef UIDEBUGER_H
+#define UIDEBUGER_H
 //
 #include "ui_UIdebuger.h"
 #include "src/debuger/gdbDriver.h"
@@ -58,11 +66,13 @@ class plugin_manager : public QObject
 {
 	Q_OBJECT
 public:
-	plugin_manager(){
-		debuggerStartUp = false;
+	plugin_manager()
+	{
+//		debuggerStartUp = false;
 	}
 
-	void init(){
+	void init()
+	{
 		qpPluginSender = NULL;
 		iCurrentPlugin=0;
 		plugin_struct_out.iPluginCommand =   -1;
@@ -74,22 +84,27 @@ public:
 	void addPlugin(UIdebugger_Plugin *plugin, QWidget *widget);
 	void execute(QString st);
 	
-	void setCurrentCommand(int i){
+	void setCurrentCommand(int i)
+	{
 		plugin_struct_out.iCurrentCommand = i;
 	}
 
-	void setPluginSender(UIdebugger_Plugin *ps){
+	void setPluginSender(UIdebugger_Plugin *ps)
+	{
 		qpPluginSender = ps;
 	}
 
-	UIdebugger_Plugin * plugin(int i){
+	UIdebugger_Plugin * plugin(int i)
+	{
 		return qlPlugin.at(i).plugin_Pointer;
 	}
 
-	void pluginNotify(bool a);
+	void pluginNotifyGdbStarted(bool a);
+	void pluginNotifyProjetOpened();
+
 	int contains(QWidget *);
 
-	bool debuggerStartUp;
+//	bool debuggerStartUp;
 	
 private:
 	// index du plugin courant
@@ -107,41 +122,41 @@ private:
 	};
 
 	QList <plugin_list> qlPlugin;
-
 };
 
 
 // =============== CLASS UI_DEBUGGER =============
 
-class UIdebuger : public QFrame, public Ui::UIdebuger
+class UIdebugger : public QFrame, public Ui::UIdebuger
 {
 	Q_OBJECT
 	//
 public :
-	static UIdebuger* self( QWidget* = 0 );
-
+	static UIdebugger* self( QWidget* = 0 );
+	//
 	// enable / desable debuger menu contextuel start/stop
-	void debugerEnable(bool enable);
+	void debuggerProjetOpened(bool open);
+	//
 	// enregistre le chemin de l'executable
-	void debugerSetProgName(QString progName);
+	void debuggerSetProgName(QString progName);
+	//
 	// toggle breakpoint
-	void debugerToggleBreakpoint(QString, int);
+	void debuggerToggleBreakpoint(QString, int);
+
 
 protected:
 	void closeEvent( QCloseEvent* );
 
 private:
-	UIdebuger( QWidget* = 0 );
-	static QPointer<UIdebuger> _self;
+	UIdebugger( QWidget* = 0 );
+	static QPointer<UIdebugger> _self;
 
 	// PLUGIN
-	class plugin_manager pluginManager;
-
-	QTimer pluginWatchDog;
+	class plugin_manager pluginDebuggerManager;
 	//
 	// start / stop debugger
-	void debugerStart();
-	void debugerStop();
+	void debuggerStart();
+	void debuggerStop();
 
 	// BREAKPOINT
 	struct sfile
@@ -161,11 +176,11 @@ private:
 	
 	// MENU
 	QMenu *menu;
-	QAction * qActionDebugerStart;
-	QAction * qActionDebugerStop;
-	QAction * qActionDebugerArgs;
+	QAction * qActionDebuggerStart;
+	QAction * qActionDebuggerStop;
+	QAction * qActionDebuggerArgs;
 	QAction * qActionPluginSetting;
-	void debugerSetMenuContext();
+	void debuggerSetMenuContext();
 
 	QString currentCommand;
 	QString m_progName;		// nom du programme a lancer
@@ -184,29 +199,29 @@ public slots:
 	void onPluginMenuAction(QAction * action);
 	
 	// action du menu par defaut
-	void on_qActionDebugerStart_triggered();
-	void on_qActionDebugerStop_triggered();
-	void on_qActionDebugerArgs_triggered();
+	void on_qActionDebuggerStart_triggered();
+	void on_qActionDebuggerStop_triggered();
+	void on_qActionDebuggerArgs_triggered();
 	void on_qActionPluginSetting_triggered();
 
 	// action du debugger par defaut
-	void ondebugerNextStepOver();
-	void ondebugerNextStepInto();
-	void ondebugerContinue();
+	void ondebuggerNextStepOver();
+	void ondebuggerNextStepInto();
+	void ondebuggerContinue();
 
 	// message en provenance de gdb
-	void ondebugerMsgFrom(QString st);
+	void onDataFromGdb(QString st);
 
 	// watch dog des plugin
 	void onPluginWatchDog();
 
 signals:
 	// le debugger est sur un breakpoint, donc notify le 
-	void debugerSignalAtLine(QString, int);
+	void debuggerSignalAtLine(QString, int);
 	// le debugger est arreté
-	void debugerSignalStoped();
+	void debuggerSignalStoped();
 	// le debugger est lancé
-	void debugerSignalStarted();
+	void debuggerSignalStarted();
 };
 //
-//#endif // UIDEBUGER_H
+#endif // UIDEBUGER_H

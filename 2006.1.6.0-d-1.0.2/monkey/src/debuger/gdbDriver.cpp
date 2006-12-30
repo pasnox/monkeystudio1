@@ -15,7 +15,7 @@
 
 
 // logger tout les message de gdb
-#define LOG_GDB	true
+#define LOG_GDB	false
 
 #ifdef Q_OS_WIN32
 #define NAME_FILE_LOG	"c:/log_gdb.txt"
@@ -42,7 +42,7 @@ GdbDriver::GdbDriver(  )
 
 	mpGdbProcess = new QProcess(this);
 	connect(mpGdbProcess,SIGNAL(readyRead()/*StandardOutput()*/),this, SLOT(gdbFinishCommandStd()));
-	connect(mpGdbProcess,SIGNAL(readyReadStandardError()),this, SLOT(gdbFinishCommandErr()));
+//	connect(mpGdbProcess,SIGNAL(readyReadStandardError()),this, SLOT(gdbFinishCommandErr()));
 
 	connect(this,SIGNAL(signalGdbCommandEnd()),this,SLOT(slotGdbCommandend()));
 
@@ -67,12 +67,12 @@ GdbDriver::~GdbDriver(  )
 
 	delete mpGdbProcess;
 }
-extern void printQstring(QString);
+
 
 
 void GdbDriver::gdbfinished ( int a, QProcess::ExitStatus  b)
 {
-//	printQstring("Gdb terminé");
+//qDebug("Gdb terminé");
 	delete this;
 }
 
@@ -111,11 +111,12 @@ void GdbDriver::setCommand(QString command)
 {
 	if(!command.isEmpty())
 		 mCommandList << command +"\r\n";
+
 	if(GdbIdl && gdbStarted)
 	{
 		mytime.restart();
 		GdbIdl = false;
-		 emit signalGdbCommandEnd();
+		emit signalGdbCommandEnd();
 	}
 }
 
@@ -140,7 +141,6 @@ void GdbDriver::gdbFinishCommandStd()
 //	out << QString( "msg brute -> " +st);
 
 
-
 	if(st.contains("This GDB was configured as"))
 	{
 		if(LOG_GDB && file_log_gdb)
@@ -156,8 +156,16 @@ void GdbDriver::gdbFinishCommandStd()
 		return;
 	}
 
-	if(st.contains//endsWith
-		("(gdb) "))
+	if(st.contains("Exit anyway?"))
+	{
+		setCommand("y");
+		GdbIdl = true;		
+		st.clear();
+		emit signalGdbCommandEnd();
+		return;
+	}
+
+	if(st.contains/*endsWith*/("(gdb) "))
 	{
 		if(LOG_GDB && file_log_gdb)
 		{
@@ -176,6 +184,7 @@ void GdbDriver::gdbFinishCommandStd()
 
 return;
 
+// last version ->
 // encienne version ->
 	if(st.contains("gdb") && gdbStarted)
 	{
@@ -200,7 +209,7 @@ return;
 	}
 }
 
-
+// no use
 void GdbDriver::gdbFinishCommandErr()
 {
 	QByteArray tes= mpGdbProcess->readAllStandardError();

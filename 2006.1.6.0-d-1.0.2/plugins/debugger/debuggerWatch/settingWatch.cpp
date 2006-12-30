@@ -15,9 +15,16 @@ settingWatch::settingWatch( QWidget* parent )
 	: QDialog( parent )
 {
 	setupUi( this );
+	connect(bOk,SIGNAL(clicked()),SLOT(onClose()));
+
 }
 //
 void settingWatch::closeEvent( QCloseEvent* e )
 {
 	e->accept();
+}
+
+void settingWatch::onClose()
+{
+	close();	
 }

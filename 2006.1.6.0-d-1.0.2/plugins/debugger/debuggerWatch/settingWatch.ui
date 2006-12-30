@@ -38,19 +38,6 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton" >
-   <property name="geometry" >
-    <rect>
-     <x>150</x>
-     <y>230</y>
-     <width>80</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="text" >
-    <string>Ok</string>
-   </property>
-  </widget>
   <widget class="QGroupBox" name="groupBox" >
    <property name="geometry" >
     <rect>
@@ -72,6 +59,9 @@
     </property>
     <item row="3" column="0" >
      <widget class="QCheckBox" name="checkBox_2" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
       <property name="text" >
        <string>Decompiler les structures</string>
       </property>
@@ -82,6 +72,9 @@
     </item>
     <item row="2" column="0" >
      <widget class="QCheckBox" name="checkBox_3" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
       <property name="text" >
        <string>Traduire les QStringList</string>
       </property>
@@ -92,6 +85,9 @@
     </item>
     <item row="1" column="0" >
      <widget class="QCheckBox" name="checkBox_4" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
       <property name="text" >
        <string>Traduire les QList (int, unsigned, float)</string>
       </property>
@@ -102,6 +98,9 @@
     </item>
     <item row="0" column="0" >
      <widget class="QCheckBox" name="checkBox" >
+      <property name="enabled" >
+       <bool>false</bool>
+      </property>
       <property name="text" >
        <string>Traduire les QString</string>
       </property>
@@ -111,6 +110,19 @@
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="bOk" >
+   <property name="geometry" >
+    <rect>
+     <x>150</x>
+     <y>230</y>
+     <width>80</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Ok</string>
+   </property>
   </widget>
  </widget>
  <resources/>

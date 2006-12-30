@@ -68,7 +68,7 @@ UIMain::UIMain( QWidget* parent )
 	connect( qApp, SIGNAL( focusChanged( QWidget*, QWidget* ) ), this, SLOT( focusChanged( QWidget*, QWidget* ) ) );
 	
 	// xiantia , Adding  debuger dialogue inside Message Box
-	twMessagesBox->addTab( UIdebuger::self(), QIcon( ":/Icons/Icons/tabsearch.png" ), tr( "Debugger" ) );
+	twMessagesBox->addTab( UIdebugger::self(), QIcon( ":/Icons/Icons/tabsearch.png" ), tr( "Debugger" ) );
 	//curentTextEditor = NULL;
 	// end xiantia
 	//
@@ -805,12 +805,11 @@ void UIMain::projectOpened( QMakeProject* project )
 	setMenuEnabled( menuBuild, true );
 	setMenuEnabled( menuDebugger, true );
 	
-	// xiantia
-//	UIdebuger::self()->debugerInitAll();		// init widget view
-	UIdebuger::self()->debugerEnable(true);	// enable menu contextuel (start, stop debuger)
-	UIdebuger::self()->debugerSetProgName(currentProject()->execute()); // set prog name for gdb
+	// xiantia	
+	UIdebugger::self()->debuggerProjetOpened(true);	// enable menu contextuel (start, stop debuger)
+	UIdebugger::self()->debuggerSetProgName(currentProject()->execute()); // set prog name for gdb
 	// connect autosync
-	connect(UIdebuger::self(),SIGNAL(debugerSignalAtLine(QString, int)), this, SLOT(on_DebugerAtLine(QString, int)));
+	connect(UIdebugger::self(),SIGNAL(debuggerSignalAtLine(QString, int)), this, SLOT(on_DebuggerAtLine(QString, int)));
 	// end
 	
 	
@@ -918,7 +917,7 @@ void UIMain::on_actionProjectSaveAll_triggered()
 void UIMain::on_actionProjectCloseCurrent_triggered()
 {
 	// xiantia, desable menu contextuel (start, stop debuger)
-	UIdebuger::self()->debugerEnable(false);
+	UIdebugger::self()->debuggerProjetOpened(false);
 	
 	delete currentProject();
 }
@@ -926,7 +925,7 @@ void UIMain::on_actionProjectCloseCurrent_triggered()
 void UIMain::on_actionProjectCloseAll_triggered()
 {
 	// xiantia,  desable menu contextuel (start, stop debuger)
-	UIdebuger::self()->debugerEnable(false);
+	UIdebugger::self()->debuggerProjetOpened(false);
 	delete mProject;
 }
 //
@@ -1211,11 +1210,11 @@ void UIMain::on_actionHelpAboutQt_triggered()
 void UIMain::on_teToggleBreakpoint(QString filePath, int bp_at)
 {
 	// ne prend que le nom du fichier + extention
-	UIdebuger::self()->debugerToggleBreakpoint( QFileInfo( filePath ).fileName() ,bp_at);
+	UIdebugger::self()->debuggerToggleBreakpoint( QFileInfo( filePath ).fileName() ,bp_at);
 }
 
 // synchronise GDB avec l'editeur !
-void UIMain::on_DebugerAtLine( QString s, int i )
+void UIMain::on_DebuggerAtLine( QString s, int i )
 {       
 static QPointer<TextEditor> mLastEditor=NULL;
 bool haveFile =false;

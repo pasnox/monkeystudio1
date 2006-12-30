@@ -9,64 +9,60 @@
 #if QT_VERSION >= 0x040200
  #include <QWidgetAction>
 #endif
-
+/*
 void UIdebuger::debugerEnable(bool enable)
 {
 	if(enable)
-	{
 		qActionDebugerStart->setEnabled(true);
-		qActionDebugerStop->setEnabled(false);
-	}
 	else
-	{
 		qActionDebugerStart->setEnabled(false);
-		qActionDebugerStop->setEnabled(false);
-	}
+
+	qActionDebugerStop->setEnabled(false);
 }
+*/
 
 
-
-void UIdebuger::on_qActionDebugerArgs_triggered()
+void UIdebugger::on_qActionDebuggerArgs_triggered()
 {
 	UIdebugerArgs::self()->exec();
 	m_progArgs = UIdebugerArgs::self()->GetArgs();
 	
 }
 
-void UIdebuger::on_qActionDebugerStart_triggered()
+void UIdebugger::on_qActionDebuggerStart_triggered()
 {
-	qActionDebugerStart->setEnabled(false);
-	qActionDebugerStop->setEnabled(true);
-	qActionDebugerArgs->setEnabled(false);
-	debugerStart();
+	qActionDebuggerStart->setEnabled(false);
+	qActionDebuggerStop->setEnabled(true);
+	qActionDebuggerArgs->setEnabled(false);
+	debuggerStart();
 }
 
-void UIdebuger::on_qActionDebugerStop_triggered()
+void UIdebugger::on_qActionDebuggerStop_triggered()
 {
-	qActionDebugerStart->setEnabled(true);
-	qActionDebugerStop->setEnabled(false);
-	qActionDebugerArgs->setEnabled(true);
-	debugerStop();
+	qActionDebuggerStart->setEnabled(true);
+	qActionDebuggerStop->setEnabled(false);
+	qActionDebuggerArgs->setEnabled(true);
+	debuggerStop();
 }
 
-void UIdebuger::on_qActionPluginSetting_triggered()
+void UIdebugger::on_qActionPluginSetting_triggered()
 {
 	// recherche le plugin courant
 	QWidget *w = stackedWidget->currentWidget();
-	int i = pluginManager.contains(w);
+	int i = pluginDebuggerManager.contains(w);
 	if(i!=-1)
 	{
 		// ce plug a t-il une configuration possible ?
-		QDialog *d = pluginManager.plugin(i)->pluginSetting();
+		QDialog *d = pluginDebuggerManager.plugin(i)->pluginSetting();
 		if(d!=NULL) 
 			d->exec();
 		else
-			QMessageBox::information(0,pluginManager.plugin(i)->pluginName(), tr("This plugin don't have a setting. ! "),QMessageBox::Ok);
+			QMessageBox::information(0,pluginDebuggerManager.plugin(i)->pluginName(), tr("This plugin don't have a setting. ! "),QMessageBox::Ok);
 	}
 }
 
 
-void UIdebuger::debugerSetMenuContext()
+void UIdebugger::debuggerSetMenuContext()
 {
 
 #if QT_VERSION >= 0x040200
@@ -76,7 +72,7 @@ void UIdebuger::debugerSetMenuContext()
 	QLabel *lbPlugin;
 	QWidgetAction *qwaPlugin;
 
-	lbRemote = new QLabel("<html><b><i >Remote debugger</i></b></html>");
+	lbRemote = new QLabel("<html><b><i >Remote debugger 1.0.2</i></b></html>");
 	lbRemote->setAlignment(Qt::AlignCenter);
 
 	qwaRemote = new QWidgetAction(0);
@@ -92,16 +88,16 @@ void UIdebuger::debugerSetMenuContext()
 	
 	menu = new QMenu("coucou",0);
 
-	qActionDebugerStop->setEnabled(false);
+	qActionDebuggerStop->setEnabled(false);
 
 
 #if QT_VERSION >= 0x040200
 	menu->addAction(qwaRemote);
 #endif
 	menu->addSeparator ();
-	menu->addAction(qActionDebugerStart);
-	menu->addAction(qActionDebugerStop);
-	menu->addAction(qActionDebugerArgs);
+	menu->addAction(qActionDebuggerStart);
+	menu->addAction(qActionDebuggerStop);
+	menu->addAction(qActionDebuggerArgs);
 	menu->addAction(qActionPluginSetting);
 
 	// juste pour voir
