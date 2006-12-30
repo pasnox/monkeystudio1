@@ -41,7 +41,6 @@ public:
 	// xiantia
 	QList <int> breakpointList;
 	int currentDebugerAt;
-	void mousePressedEvent( QMouseEvent *e);
 
 	//
 protected:
@@ -61,6 +60,7 @@ signals:
 	//
 public slots:
 	void setDefaultProperties();
+	void mousePressedEvent( QMouseEvent *e);
 };
 //
 #endif // GLUTER_H

@@ -4,8 +4,6 @@
 //===============================
 
 
-// INFO : pas de bug trouv
-
 /*
 
 structure contenant tout les breakpoint et index GDB pour un fichier source
@@ -25,17 +23,16 @@ structure contenant tout les breakpoint et index GDB pour un fichier source
 	BP_index = 1, 2, 3
 
 	Gdb ne donne pas de nom au breakpoint, seulement un index de creation
-	il faut donc les memorisers pour pouvoir les supprimers par exemple.
+	il faut donc les memorisers pour pouvoir les supprimers par la suite .
 */
 
 
 #include "src/debuger/UIdebuger.h"
-//#include "src/debuger/debuger_Register.h"
 #include <QCheckBox>
 
 //============== BREAKPOINT =============
 
-void UIdebuger::breakpointInit()
+void UIdebugger::breakpointInit()
 {
 	// on ouvre un projet alors supprime de la vue touts les breakpoint 
 /*	for(int i=0; twBreakpoint->rowCount(); i++)
@@ -103,7 +100,7 @@ void UIdebuger::breakpointSup(QString fileName, QString line)
 // Parcour la liste a la recherche du fichier source
 // si le fichier exist retourn sont index dans la liste
 // sinon -1
-int UIdebuger::findFile(QString fileName)
+int UIdebugger::findFile(QString fileName)
 {
 	int numberfile = BreakpointList.count();
 
@@ -111,7 +108,7 @@ int UIdebuger::findFile(QString fileName)
 	{	
 		for(int i=0; i<numberfile; i++)
 		{
-			//modif QFileInfo for ubuntu
+			//modif QFileInfo for ubuntu V1.0.2
 			if(QFileInfo(BreakpointList[i].File_name).fileName() == QFileInfo(fileName).fileName()) return i;
 		}
 	}
@@ -121,7 +118,7 @@ int UIdebuger::findFile(QString fileName)
 
 // le breakpoint est memoris par GDB
 // il retourne sont index
-void UIdebuger::setBreakpointIndex(QString st)
+void UIdebugger::setBreakpointIndex(QString st)
 {
 // Breakpoint 1 at 0x8052a27: file main.cpp, line 18.
 // recupere le 1
@@ -151,7 +148,7 @@ void UIdebuger::setBreakpointIndex(QString st)
 
 // initialise les breakpoint qui ont etaient fait
 // avant le lancement de GDB
-void UIdebuger::setBreakpointOnStart()
+void UIdebugger::setBreakpointOnStart()
 {
 int numberfile = BreakpointList.count();
 
@@ -170,7 +167,7 @@ int numberfile = BreakpointList.count();
 // slot public
 // CTRL + B venant de TextEditor
 // OK
-void UIdebuger::debugerToggleBreakpoint(QString fileName, int bp_line)
+void UIdebugger::debuggerToggleBreakpoint(QString fileName, int bp_line)
 {
 
 //	ondebugerMsgFrom(QString("toggleBreakpoint:"+ fileName +":"+ QString::number(bp_line)));
@@ -226,7 +223,7 @@ struct sfile mBreakpointList;
 		}			
 		else
 		{
-			// la liste est initialis
+			// la liste est initialisé
 			// mais ne contient pas ce fichier source
 //qDebug("fichier non trouvÃ© -> ajoute le ");
 			BreakpointList << mBreakpointList; 
@@ -245,6 +242,15 @@ struct sfile mBreakpointList;
 		if(pGdbCommand) pGdbCommand->setBreakpoint(breakpoint_at);		
 //		breakpointAdd(fileName,QString::number(bp_line));
 	}
+
+/*
+	QString tmp="bp list on true list ";
+	for(int i=0 ; i<BreakpointList.at(0).Bp_list.count(); i++)
+	{
+		tmp += QString::number( BreakpointList.at(0).Bp_list[i]) + ", ";
+	}
+	qDebug(tmp.toAscii());
+*/
 }
 
 

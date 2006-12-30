@@ -69,6 +69,7 @@ void Watch::pluginInitWidget()
 	int count = trWatch->topLevelItemCount ();
 
 	bDelVariable.setEnabled(false);
+
 	// del all item in treeview
 	for(int i=0; i<count; i++)
 		delete trWatch->topLevelItem (0);

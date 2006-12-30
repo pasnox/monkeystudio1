@@ -58,6 +58,7 @@ void LogPlugin::pluginInitWidget()
 	teGdbLog->clear();
 	teGdbLog->setTextColor(Qt::blue);
 	teGdbLog->append("*** Gdb console ***\n");
+	leLog->setEnabled(false);
 }
 
 

@@ -16,8 +16,6 @@ settingRegister::settingRegister( QWidget* parent )
 {
 	setupUi( this );
 	connect(bOk,SIGNAL(clicked()),SLOT(onClose()));
-	//connect(radioDecimal,SIGNAL(clicked(bool)),SLOT(onDecimal(bool)));
-	//connect(radioHexAndDecimal,SIGNAL(clicked(bool)),SLOT(onHexAndDecimal(bool)));
 }
 //
 void settingRegister::closeEvent( QCloseEvent* e )

@@ -127,7 +127,7 @@ void MDIClass::closeEvent( QCloseEvent* e )
 	teHeader->closeFile();
 	teSource->closeFile();
 
-	// supprime la list des breakpoint en fonction du nom du fichier
+/*	// supprime la list des breakpoint en fonction du nom du fichier
 	QStringList s = mProject->stringListValue( "DEBUGGER");
 	for(int i=0; i<s.count(); i++)
 	{
@@ -147,8 +147,8 @@ void MDIClass::closeEvent( QCloseEvent* e )
 		mProject->addStringListValue( "DEBUGGER","(all)",QFileInfo(teSource->filePath()).fileName()+ lineNumber);
 	}
 	 // ne fonctionne que si on ferme le fiechier avant la fermeture du project
-	//BUG
-	mProject->setModified( true );
+	//BUG*/
+//	mProject->setModified( true );
 	MDIChild::closeEvent( e );
 }
 //

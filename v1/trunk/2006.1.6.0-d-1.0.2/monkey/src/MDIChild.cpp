@@ -120,7 +120,7 @@ void MDIChild::fileOpened( bool opened )
 
 		// xiantia 
 		// lecture des breakpoint present dans le .pro
-		QStringList s = mProject->stringListValue( "DEBUGGER");
+/*		QStringList s = mProject->stringListValue( "DEBUGGER");
 		for(int i=0; i<s.count(); i++)
 		{
 			QStringList l = s.at(i).split(":");
@@ -135,7 +135,7 @@ fprintf(stdout,"emit signal\n");
 	emit signalBreakpointAt(QFileInfo(editor->filePath()).fileName(),l.at(k+1).toInt());
 				}
 			}
-		}
+		}*/
 		// end
 	}
 }

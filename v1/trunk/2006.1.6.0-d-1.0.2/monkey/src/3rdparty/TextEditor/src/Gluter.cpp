@@ -26,15 +26,16 @@ Gluter::Gluter( QTextEdit* edit )
 	connect( mEdit->verticalScrollBar(), SIGNAL( valueChanged( int ) ), this, SLOT( update() ) );
 	setDefaultProperties();
 
+	// xiantia
 	breakpointList.clear();
 	currentDebugerAt = -1;
 }
 //
 void Gluter::mousePressedEvent( QMouseEvent *e)
 {
+		qDebug("ok");
 	if( e->button() == Qt::RightButton)
-		;
-}
+;}
 
 
 void Gluter::paintEvent( QPaintEvent* )
@@ -63,37 +64,33 @@ void Gluter::paintEvent( QPaintEvent* )
 		if(breakpointList.indexOf(lineNumber) != -1)
 		{
 			QRectF target(-1, qRound( position.y() ) - contentsY +1, 16.0, 16.0);
-			 QRectF source(0.0, 0.0, 22.0, 22.0);
-			 QPixmap pixmap(":/Icons/Icons/fileclose.png");
+			QRectF source(0.0, 0.0, 22.0, 22.0);
+			QPixmap pixmap(":/Icons/Icons/fileclose.png");
 
-			// QPainter(this);
  			p.drawPixmap(target, pixmap, source);
-/*			p.setBrush(Qt::red);
-			p.setPen(Qt::red);
-			p.drawEllipse(2,qRound( position.y() ) - contentsY +4,10,10);
-			p.setPen(Qt::black);
-*/		}
+		}
 		
-		// fleche blue
+		// fleche verte
 		if(currentDebugerAt == lineNumber)
 		{
 	/*		QRectF target(0, qRound( position.y() ) - contentsY +2, 18.0, 15.0);
 			 QRectF source(0.0, 0.0, 22.0, 22.0);
 			 QPixmap pixmap(":/Icons/Icons/buttonnext.png");
  			p.drawPixmap(target, pixmap, source);
-*/			int t=qRound( position.y() ) - contentsY+4 ;
+*/
+			int t=qRound( position.y() ) - contentsY+4 ;
 			QPointF fpoint[7] = 
 			{
 				QPointF(5,0+t),
-						QPointF(10,5+t),
-						QPointF(5,10+t),
-						QPointF(5,8+t),
-						QPointF(0,8+t),
-						QPointF(0,2+t),
-						QPointF(5,2+t)};
+				QPointF(13,5+t),
+				QPointF(5,10+t),
+				QPointF(5,8+t),
+				QPointF(0,8+t),
+				QPointF(0,2+t),
+				QPointF(5,2+t)};
 				
-				p.setBrush(Qt::blue);
-				p.setPen(Qt::blue);
+				p.setBrush(Qt::green);
+				p.setPen(Qt::black);
 				p.drawPolygon (fpoint,7);
 				p.setPen(Qt::black);
 		}

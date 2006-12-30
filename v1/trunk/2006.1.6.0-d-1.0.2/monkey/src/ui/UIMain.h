@@ -142,7 +142,7 @@ public slots:
 	void on_actionBuildLrelease_triggered();
 	// xiantia, Debugger
 	void on_teToggleBreakpoint(QString, int);
-	void on_DebugerAtLine(QString fileorfonction, int line);
+	void on_DebuggerAtLine(QString fileorfonction, int line);
 	// Tools
 	void loadTools();
 	void on_actionToolsEdit_triggered();
