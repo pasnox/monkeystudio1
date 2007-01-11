@@ -78,7 +78,9 @@ FORMS	= src/3rdparty/TextEditor/src/ui/ReplaceDialog.ui \
 OPENEDFILES	= src/debuger/UIdebuger.h \
 	src/debuger/UIdebuger.cpp \
 	src/debuger/gdbDriver.h \
-	src/debuger/gdbDriver.cpp
+	src/debuger/gdbDriver.cpp \
+	src/QMakeProject.h \
+	src/QMakeProject.cpp
 
 HEADERS	= src/3rdparty/TextEditor/src/BlockData.h \
 	src/3rdparty/TextEditor/src/Completion.h \
