@@ -9,7 +9,7 @@ class name UIdebugger
 	/* 
 	A pour effet de griser les menu start et stop du menu contextuel.
 	De stopper le debugger si il etait en fonction a la fermeture du projet
-	De notify a tout les plugin que le projet est ouvert / fermé 
+	De notify a tout les plugin que le projet est ouvert / fermï¿½
 	*/
 	
 	//	debuggerProjetOpened(true / false);
@@ -195,7 +195,7 @@ public slots:
 	void onPluginMouse(QMouseEvent *);
 	// un plugin demande des infos a gdb 
 	void onPluginAction(UIdebugger_Plugin * ,struct UIdebugger_struct *);
-	// on a selectionné un plug a afficher dans le stacked
+	// on a selectionnï¿½un plug a afficher dans le stacked
 	void onPluginMenuAction(QAction * action);
 	
 	// action du menu par defaut
@@ -218,9 +218,9 @@ public slots:
 signals:
 	// le debugger est sur un breakpoint, donc notify le 
 	void debuggerSignalAtLine(QString, int);
-	// le debugger est arreté
+	// le debugger est arretï¿½
 	void debuggerSignalStoped();
-	// le debugger est lancé
+	// le debugger est lancï¿½
 	void debuggerSignalStarted();
 };
 //

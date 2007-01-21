@@ -273,6 +273,7 @@ void QMakeProject::remove_multiline_contents( QString& contents, const QString& 
 //
 void QMakeProject::readPlatformSettings( const QString& contents )
 {
+//	const QString platforms[] = { "", "win32", "unix", "mac", QString::null };
 	const QString platforms[] = { "", "win32", "unix", "mac", "win32-g++", "win32-msvc", "linux-g++", "macx-g++", QString::null };
 	QString setting, platform;
 	// String Values
