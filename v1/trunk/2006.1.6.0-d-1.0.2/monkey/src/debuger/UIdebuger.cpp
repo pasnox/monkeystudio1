@@ -421,6 +421,8 @@ void UIdebugger::ondebuggerContinue()
 		qActionDebuggerStop->setEnabled(false);
 
 		pGdbCommand->setContinue();
+		// efface la fleche
+		emit debuggerSignalAtLine("",-1);
 	}
 }
 

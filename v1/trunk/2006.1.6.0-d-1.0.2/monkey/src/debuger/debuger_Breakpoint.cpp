@@ -223,7 +223,7 @@ struct sfile mBreakpointList;
 		}			
 		else
 		{
-			// la liste est initialisé
+			// la liste est initialisï¿½
 			// mais ne contient pas ce fichier source
 //qDebug("fichier non trouvÃ© -> ajoute le ");
 			BreakpointList << mBreakpointList; 

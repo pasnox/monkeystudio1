@@ -1269,7 +1269,7 @@ bool haveFile =false;
 		}
 	}
 
-	if(!haveFile && !s.isEmpty()) // le fishier n'a pas etait trouvé
+	if(!haveFile && !s.isEmpty()) // le fishier n'a pas etait trouvï¿½
 	{
 		QString result = QFileDialog::getOpenFileName( this, tr( "Search file " ) + s , ".", QMakeProject::qtExtensions() );
 		if(result.isEmpty())
