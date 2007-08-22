@@ -1,0 +1,30 @@
+/********************************************************************************************************
+ * PROGRAM      : qt4ds
+ * DATE - TIME  : lundi 09 janvier 2006 - 14h32
+ * AUTHOR       : Nox P@sNox ( pasnox@hotmail.com )
+ * FILENAME     : ToDo.txt
+ * LICENSE      : GPL
+ * COMMENTARY   : This file contains the list of things to do for the next version
+ ********************************************************************************************************/
+** Next Version ToDo ( 2006.1.0.0 RC2 ) **
+
+UINewFiles:
+===========
+	* Project: 100%
+	* Files: 100%
+	* Templates: 0% ( Need Qt Designer Implementation! )
+
+Tools: isGnomeRuning, openUrl, shellExecute need fix (gnome)
+=====
+
+Finir UIOptions2
+
+******* TO DO, SOME HELP WILL BE GREATLY APPRECIATED *******
+
+* QT4DS Manual in Qt Assistant Format ( I have start it )
+* Qt Designer Integration ( Need Help )
+* Add Debugger ( I Don't know how to use a debugger, poor me... )
+* Add Diff Tool ( Like debugger )
+
+					Nox P@sNox, ( pasnox@hotmail.com )
+--EOF

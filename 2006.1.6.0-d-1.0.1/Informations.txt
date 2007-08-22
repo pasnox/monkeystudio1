@@ -1,0 +1,50 @@
+/********************************************************************************************************
+ * PROGRAM      : qt4ds
+ * DATE - TIME  : lundi 30 janvier 2006 - 17h52
+ * AUTHOR       : Nox P@sNox ( pasnox@hotmail.com )
+ * FILENAME     : Informations.txt
+ * LICENSE      : GPL
+ * COMMENTARY   : This file describe some parts of the api and interesting things
+ ********************************************************************************************************/
+
+QMakeProject
+===========
+	This class embed a pro file and manage it inside Qt4DS.
+	The tree items contains data like this :
+	UserType +1 : This represent the file type ( pFileType )
+	UserType +2 : This represent the full file path if this item represent a file, else it contains the full project file path ( filePath )
+
+UIProjectSettings
+=============
+	These CONFIG values control compilation flags:
+	release - Compile with optimization enabled, ignored if "debug" is specified.
+	debug - Compile with debug options enabled.
+	warn_on - The compiler should emit more warnings than normally, ignored if "warn_off" is specified.
+	warn_off - The compiler should only emit severe warnings.
+	These options define the application/library type:
+	qt - The target is a Qt application/library and requires the Qt header files/library. The proper include and library paths for the Qt library will automatically be added to the project.
+	opengl - The target requires the OpenGL (or Mesa) headers/libraries. The proper include and library paths for these libraries will automatically be added to the project.
+	thread - The target is a multi-threaded application or library. The proper defines and compiler flags will automatically be added to the project.
+	x11 - The target is a X11 application or library. The proper include paths and libraries will automatically be added to the project.
+	windows - The target is a Win32 window application (app only). The proper include paths,compiler flags and libraries will automatically be added to the project.
+	console - The target is a Win32 console application (app only). The proper include paths, compiler flags and libraries will automatically be added to the project.
+	dll - The target is a shared object/DLL.The proper include paths, compiler flags and libraries will automatically be added to the project.
+	staticlib - The target is a static library (lib only). The proper compiler flags will automatically be added to the project.
+	plugin - The target is a plugin (lib only). This enables dll as well.
+	designer - The target is a plugin for Qt Designer.
+	uic3 - Configures qmake to run uic3 on the content of FORMS3 if defined, else FORMS.
+	no_lflags_merge - Ensures that the list of libraries stored in the LIBS variable is not reduced to a list of unique values before it is used.
+	These options are used to set the compiler flags:
+	exceptions - Exception support is enabled.
+	rtti - RTTI support is enabled.
+	stl - STL support is enabled.
+	These options define specific things on Windows only:
+	flat - When using the vcapp template this will put all the source files into the source group and the header files into the header group regardless of what directory they reside in. Turning this option off will group the files within the source/header group depending on the directory they reside. This is turned on by default.
+	These options only have an effect on Mac OS X:
+	ppc - Builds a PowerPC binary.
+	x86 - Builds an i386 compatible binary.
+	app_bundle - Puts the executable into a bundle (this is the default).
+	lib_bundle - Puts the library into a library bundle.
+
+					Nox P@sNox, ( pasnox@hotmail.com )
+--EOF
